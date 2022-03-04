@@ -1,0 +1,19 @@
+items:
+  sword:
+    material: "DIAMOND_SWORD"
+    name: "&cSword example"
+    lore: 'lore first &&& second &&& THIrd'
+
+  bow:
+    material: "BOW"
+    name: "&cBow example"
+    lore: 'lore first &&& &esecond &&& THIrd'
+
+  rod:
+    material: "FISHING_ROD"
+    name: "&cRod example"
+    lore: 'lore first &&& second &&& THIrd'
+  test:
+    material: "APPLE"
+    name: "&agenius"
+    lore: '&ceat an apple &&& &leveryday it s &&& &bfcking good'

@@ -1,0 +1,7 @@
+name: infiniteItems
+version: 1.0
+author: ayato__
+main: fr.ayato.infiniteitems.Main
+commands:
+    infiniteitems:
+        permissions: infiniteitems.give
