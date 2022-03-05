@@ -21,8 +21,8 @@ public class CreateItem {
     /* Initialize an item with data of the configuration file
        Executed by the command */
     public static ItemStack itemToGive(Material material, String name, String displayName, String loreFromConfig, String enchantments,  String levels, String hide) {
-        ItemStack item = new ItemStack(material, 1);
-        ItemMeta meta = item.getItemMeta();
+        final ItemStack item = new ItemStack(material, 1);
+        final ItemMeta meta = item.getItemMeta();
 
         // Text
         meta.setDisplayName(displayName);

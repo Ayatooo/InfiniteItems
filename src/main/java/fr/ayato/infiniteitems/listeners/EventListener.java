@@ -21,20 +21,20 @@ public class EventListener implements Listener {
         this.plugin = main;
     }
 
-    public HashMap<UUID, List<String>> hasInfiniteItem = new HashMap<>();
+    private HashMap<UUID, List<String>> hasInfiniteItem = new HashMap<>();
     // When someone has been killed, checks if this player had an infinite item on him
     @EventHandler
     public void checkOnDeath(PlayerDeathEvent e) {
-        Player player = e.getEntity().getPlayer();
-        UUID playerUUID = player.getUniqueId();
+        final Player player = e.getEntity().getPlayer();
+        final UUID playerUUID = player.getUniqueId();
 
         // Iterate over all the player inventory to check if he has infinite item
-        Iterator<ItemStack> iterator = e.getDrops().iterator();
+        final Iterator<ItemStack> iterator = e.getDrops().iterator();
         while(iterator.hasNext()){
-            ItemStack stack = iterator.next();
+            final ItemStack stack = iterator.next();
             for (int i = 0; i < Main.name.size(); i++) {
-                List<String> loreToCheck = Spliter.strToList(Spliter.stringToSplit(plugin.getConfig().getString(Main.name.get(i) + ".lore")));
-                List<String> loreOfItemDropped = stack.getItemMeta().getLore();
+                final List<String> loreToCheck = Spliter.strToList(Spliter.stringToSplit(plugin.getConfig().getString(Main.name.get(i) + ".lore")));
+                final List<String> loreOfItemDropped = stack.getItemMeta().getLore();
 
                 // Searching for infinite items
                 if (loreToCheck.equals(loreOfItemDropped)) {
@@ -42,7 +42,7 @@ public class EventListener implements Listener {
 
                         // Put the player in a Hashmap if he has one / multiple infinite items
                         for (Map.Entry<UUID, List<String>> entry : hasInfiniteItem.entrySet()) {
-                            List<String> temp = new ArrayList<>(entry.getValue());
+                            final List<String> temp = new ArrayList<>(entry.getValue());
                             hasInfiniteItem.put(playerUUID, temp);
                         }
                     } else {
@@ -58,20 +58,20 @@ public class EventListener implements Listener {
     Give to a player his infinite item if he is in the list */
     @EventHandler
     public void checkOnRespawn(PlayerRespawnEvent e) {
-        Player player = e.getPlayer();
-        UUID playerUUID = player.getUniqueId();
+        final Player player = e.getPlayer();
+        final UUID playerUUID = player.getUniqueId();
 
         // Iterate over the list until it's empty
         while (!hasInfiniteItem.isEmpty()) {
             for (Map.Entry<UUID, List<String>> entry : hasInfiniteItem.entrySet()) {
                 for (String s : entry.getValue()) {
                     // Item's Data
-                    Material material = Material.valueOf(plugin.getConfig().getString(s + ".material"));
-                    String lore = plugin.getConfig().getString(s + ".lore");
-                    String configItemName = plugin.getConfig().getString(s + ".name");
-                    String enchantments = plugin.getConfig().getString(s + ".enchantments");
-                    String enchantmentsLevels = plugin.getConfig().getString(s + ".levels");
-                    String hide = plugin.getConfig().getString(s + ".hide");
+                    final Material material = Material.valueOf(plugin.getConfig().getString(s + ".material"));
+                    final String lore = plugin.getConfig().getString(s + ".lore");
+                    final String configItemName = plugin.getConfig().getString(s + ".name");
+                    final String enchantments = plugin.getConfig().getString(s + ".enchantments");
+                    final String enchantmentsLevels = plugin.getConfig().getString(s + ".levels");
+                    final String hide = plugin.getConfig().getString(s + ".hide");
 
                     // Give the item to the player who lost it
                     player.getInventory().addItem(CreateItem.itemToGive(material, Spliter.itemPathToName(s), Colors.checkForChanges(configItemName), Colors.checkForChanges(lore), enchantments, enchantmentsLevels, hide));
