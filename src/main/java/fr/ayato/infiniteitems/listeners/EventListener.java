@@ -1,5 +1,7 @@
-package fr.ayato.infiniteitems;
+package fr.ayato.infiniteitems.listeners;
 
+import fr.ayato.infiniteitems.Main;
+import fr.ayato.infiniteitems.items.CreateItem;
 import fr.ayato.infiniteitems.utils.Colors;
 import fr.ayato.infiniteitems.utils.Spliter;
 import org.bukkit.Material;
@@ -34,20 +36,15 @@ public class EventListener implements Listener {
                 List<String> loreToCheck = Spliter.strToList(Spliter.stringToSplit(plugin.getConfig().getString(Main.name.get(i) + ".lore")));
                 List<String> loreOfItemDropped = stack.getItemMeta().getLore();
 
+                // Searching for infinite items
                 if (loreToCheck.equals(loreOfItemDropped)) {
-                    System.out.println("lore egal = " + loreOfItemDropped);
                     if (hasInfiniteItem.containsKey(playerUUID)) {
 
+                        // Put the player in a Hashmap if he has one / multiple infinite items
                         for (Map.Entry<UUID, List<String>> entry : hasInfiniteItem.entrySet()) {
-                            List<String> temp = new ArrayList<>();
-                            for (String s : entry.getValue()) {
-                                temp.add(s);
-                                System.out.println("temp DANS BOUCLE = " + temp);
-                            }
-                            System.out.println("temp HORS BOUCLE = " + temp);
+                            List<String> temp = new ArrayList<>(entry.getValue());
                             hasInfiniteItem.put(playerUUID, temp);
                         }
-
                     } else {
                         hasInfiniteItem.put(playerUUID, Collections.singletonList(Main.name.get(i)));
                     }
@@ -66,7 +63,6 @@ public class EventListener implements Listener {
 
         // Iterate over the list until it's empty
         while (!hasInfiniteItem.isEmpty()) {
-            System.out.println("LA MAP = " + hasInfiniteItem);
             for (Map.Entry<UUID, List<String>> entry : hasInfiniteItem.entrySet()) {
                 for (String s : entry.getValue()) {
                     // Item's Data
@@ -86,9 +82,3 @@ public class EventListener implements Listener {
         }
     }
 }
-
-/*for (Map.Entry<UUID, List<String>> entry : hasInfiniteItem.entrySet()) {
-                            for (String s : entry.getValue()) {
-
-                            }
-                        }*/

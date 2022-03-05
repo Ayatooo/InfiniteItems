@@ -1,5 +1,7 @@
 package fr.ayato.infiniteitems;
 
+import fr.ayato.infiniteitems.items.GiveItems;
+import fr.ayato.infiniteitems.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +19,8 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         getCommand("infiniteitems").setExecutor(new GiveItems(this));
         getServer().getPluginManager().registerEvents(new EventListener(this), this);
+
+        // It check all items created in the config file and put them in a local list
         for (String s : getConfig().getKeys(true)) {
             try {
                 if (!getConfig().getString(s + ".material").isEmpty()) {

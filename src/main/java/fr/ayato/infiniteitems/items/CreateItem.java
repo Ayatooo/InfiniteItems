@@ -1,5 +1,6 @@
-package fr.ayato.infiniteitems;
+package fr.ayato.infiniteitems.items;
 
+import fr.ayato.infiniteitems.Main;
 import fr.ayato.infiniteitems.utils.Spliter;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -17,8 +18,8 @@ public class CreateItem {
         plugin = main;
     }
 
-    // Initialize an item with data of the configuration file
-    // Executed by the command
+    /* Initialize an item with data of the configuration file
+       Executed by the command */
     public static ItemStack itemToGive(Material material, String name, String displayName, String loreFromConfig, String enchantments,  String levels, String hide) {
         ItemStack item = new ItemStack(material, 1);
         ItemMeta meta = item.getItemMeta();

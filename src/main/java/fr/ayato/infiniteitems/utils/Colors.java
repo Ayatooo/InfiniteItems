@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 
 public class Colors {
 
+    // Change the characters from the config file to minecraft Colors
     public static String checkForChanges(String s) {
         s = s.replaceAll("&0", ChatColor.BLACK + "");
         s = s.replaceAll("&1", ChatColor.DARK_BLUE + "");

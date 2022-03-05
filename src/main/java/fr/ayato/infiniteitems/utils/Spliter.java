@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class Spliter {
 
-    // split a string with the ", " character and return it in a list
+    // Split a string with the ", " character and return it in a list
     public static List<String> strToList(String string) {
         List<String> list = new ArrayList<>();
         Stream.of(string)
@@ -24,7 +24,7 @@ public class Spliter {
         return string;
     }
 
-    // return
+    // Return the path of the item in the config file
     public static String itemPathToName(String string) {
         return Arrays.toString(string.split("items."));
     }

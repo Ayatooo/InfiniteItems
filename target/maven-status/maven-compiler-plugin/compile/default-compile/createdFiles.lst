@@ -1,6 +1,6 @@
-fr\ayato\infiniteitems\GiveItems.class
-fr\ayato\infiniteitems\CreateItem.class
 fr\ayato\infiniteitems\utils\Colors.class
+fr\ayato\infiniteitems\listeners\EventListener.class
 fr\ayato\infiniteitems\Main.class
+fr\ayato\infiniteitems\items\GiveItems.class
 fr\ayato\infiniteitems\utils\Spliter.class
-fr\ayato\infiniteitems\EventListener.class
+fr\ayato\infiniteitems\items\CreateItem.class

@@ -1,5 +1,6 @@
-package fr.ayato.infiniteitems;
+package fr.ayato.infiniteitems.items;
 
+import fr.ayato.infiniteitems.Main;
 import fr.ayato.infiniteitems.utils.Colors;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -24,14 +25,21 @@ public class GiveItems implements CommandExecutor {
         if (args.length == 2) {
             Player player = Bukkit.getPlayer(args[0]);
             String name = Objects.toString(args[1]);
+
+            /* Only a player with the permission or a player buying / executing the command with console can
+               have an item existing in the config file */
             if (player.hasPermission("infiniteitems") || sender instanceof ConsoleCommandSender) {
                 if (plugin.getConfig().contains("items." + name)) {
+
+                    // Item's Data
                     Material material = Material.valueOf(plugin.getConfig().getString("items." + name + ".material"));
                     String lore = plugin.getConfig().getString("items." + name + ".lore");
                     String configItemName = plugin.getConfig().getString("items." + name + ".name");
                     String enchantments = plugin.getConfig().getString("items." + name + ".enchantments");
                     String enchantmentsLevels = plugin.getConfig().getString("items." + name + ".levels");
                     String hide = plugin.getConfig().getString("items." + name + ".hide");
+
+                    // Give the item to the player
                     player.getInventory().addItem(CreateItem.itemToGive(material, name, Colors.checkForChanges(configItemName), Colors.checkForChanges(lore), enchantments, enchantmentsLevels, hide));
                     player.updateInventory();
                 } else {
