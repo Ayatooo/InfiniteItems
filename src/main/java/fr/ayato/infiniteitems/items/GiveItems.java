@@ -24,23 +24,23 @@ public class GiveItems implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2) {
             final Player player = Bukkit.getPlayer(args[0]);
-            final String name = Objects.toString(args[1]);
+            final String configItemName = Objects.toString(args[1]);
 
             /* Only a player with the permission or a player buying / executing the command with console can
                have an item existing in the config file */
             if (player.hasPermission("infiniteitems") || sender instanceof ConsoleCommandSender) {
-                if (plugin.getConfig().contains("items." + name)) {
+                if (plugin.getConfig().contains("items." + configItemName)) {
 
                     // Item's Data
-                    final Material material = Material.valueOf(plugin.getConfig().getString("items." + name + ".material"));
-                    final String lore = plugin.getConfig().getString("items." + name + ".lore");
-                    final String configItemName = plugin.getConfig().getString("items." + name + ".name");
-                    final String enchantments = plugin.getConfig().getString("items." + name + ".enchantments");
-                    final String enchantmentsLevels = plugin.getConfig().getString("items." + name + ".levels");
-                    final String hide = plugin.getConfig().getString("items." + name + ".hide");
+                    final Material material = Material.valueOf(plugin.getConfig().getString("items." + configItemName + ".material"));
+                    final String lore = plugin.getConfig().getString("items." + configItemName + ".lore");
+                    final String itemDisplayName = plugin.getConfig().getString("items." + configItemName + ".name");
+                    final String enchantments = plugin.getConfig().getString("items." + configItemName + ".enchantments");
+                    final String enchantmentsLevels = plugin.getConfig().getString("items." + configItemName + ".levels");
+                    final String hide = plugin.getConfig().getString("items." + configItemName + ".hide");
 
                     // Give the item to the player
-                    player.getInventory().addItem(CreateItem.itemToGive(material, name, Colors.checkForChanges(configItemName), Colors.checkForChanges(lore), enchantments, enchantmentsLevels, hide));
+                    player.getInventory().addItem(CreateItem.itemToGive(material, Colors.checkForChanges(itemDisplayName), Colors.checkForChanges(lore), enchantments, enchantmentsLevels, hide));
                     player.updateInventory();
                 } else {
                     player.sendMessage("§b§lInfiniteItems §e» §cPlease select an item existing in the configuration file !");

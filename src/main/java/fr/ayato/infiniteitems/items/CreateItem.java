@@ -20,13 +20,13 @@ public class CreateItem {
 
     /* Initialize an item with data of the configuration file
        Executed by the command */
-    public static ItemStack itemToGive(Material material, String name, String displayName, String loreFromConfig, String enchantments,  String levels, String hide) {
+    public static ItemStack itemToGive(Material material, String displayName, String loreFromConfig, String enchantments,  String levels, String hide) {
         final ItemStack item = new ItemStack(material, 1);
-        final ItemMeta meta = item.getItemMeta();
+        final ItemMeta itemMeta = item.getItemMeta();
 
         // Text
-        meta.setDisplayName(displayName);
-        meta.setLore(Spliter.strToList(Spliter.stringToSplit(loreFromConfig)));
+        itemMeta.setDisplayName(displayName);
+        itemMeta.setLore(Spliter.strToList(Spliter.stringToSplit(loreFromConfig)));
 
         // Enchantments
         List<String> enchantList = Spliter.strToList(Spliter.stringToSplit(enchantments));
@@ -36,17 +36,17 @@ public class CreateItem {
 
         // Add Enchantments on the item
         for (int i = 0; i < enchantList.size(); i++) {
-            meta.addEnchant(Enchantment.getByName(enchantList.get(i)), Integer.parseInt(levelsList.get(i)), true);
+            itemMeta.addEnchant(Enchantment.getByName(enchantList.get(i)), Integer.parseInt(levelsList.get(i)), true);
         }
 
         // If the option is enable, enchantments will be hide
         if (hide.contains("true")) {
-            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
 
-        meta.spigot().setUnbreakable(true);
-        item.setItemMeta(meta);
+        itemMeta.spigot().setUnbreakable(true);
+        item.setItemMeta(itemMeta);
         return item;
     }
 }

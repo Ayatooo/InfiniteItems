@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Main extends JavaPlugin {
 
-    public static List<String> name = new ArrayList<>();
+    public static List<String> configItemName = new ArrayList<>();
 
     // This function active the plugin
     @Override
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
         for (String s : getConfig().getKeys(true)) {
             try {
                 if (!getConfig().getString(s + ".material").isEmpty()) {
-                    name.add(s);
+                    configItemName.add(s);
                 }
             } catch (NullPointerException e) {
                 System.out.println(e);
