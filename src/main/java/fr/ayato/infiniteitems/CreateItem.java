@@ -7,7 +7,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreateItem {
@@ -15,7 +14,7 @@ public class CreateItem {
     // Plugin
     private static Main plugin;
     public CreateItem(Main main) {
-        this.plugin = main;
+        plugin = main;
     }
 
     // Initialize an item with data of the configuration file
@@ -26,23 +25,20 @@ public class CreateItem {
 
         // Text
         meta.setDisplayName(displayName);
-        meta.setLore(Spliter.strToList(loreFromConfig));
+        meta.setLore(Spliter.strToList(Spliter.stringToSplit(loreFromConfig)));
 
         // Enchantments
-        enchantments = enchantments.replace("[", "");
-        enchantments = enchantments.replace("]", "");
-        List<String> enchantList = Spliter.strToList(enchantments);
+        List<String> enchantList = Spliter.strToList(Spliter.stringToSplit(enchantments));
 
         // Enchantments Levels
-        levels = levels.replace("[", "");
-        levels = levels.replace("]", "");
-        List<String> levelsList = Spliter.strToList(levels);
+        List<String> levelsList = Spliter.strToList(Spliter.stringToSplit(levels));
 
-        // Add enchants on the item
+        // Add Enchantments on the item
         for (int i = 0; i < enchantList.size(); i++) {
             meta.addEnchant(Enchantment.getByName(enchantList.get(i)), Integer.parseInt(levelsList.get(i)), true);
         }
 
+        // If the option is enable, enchantments will be hide
         if (hide.contains("true")) {
             meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

@@ -4,25 +4,25 @@ import org.bukkit.ChatColor;
 
 public class Colors {
 
-    public static String checkForChanges(String lore) {
-        lore = lore.replaceAll("&0", ChatColor.BLACK + "");
-        lore = lore.replaceAll("&1", ChatColor.DARK_BLUE + "");
-        lore = lore.replaceAll("&2", ChatColor.DARK_GREEN + "");
-        lore = lore.replaceAll("&3", ChatColor.DARK_AQUA + "");
-        lore = lore.replaceAll("&4", ChatColor.DARK_RED + "");
-        lore = lore.replaceAll("&5", ChatColor.DARK_PURPLE + "");
-        lore = lore.replaceAll("&6", ChatColor.GOLD + "");
-        lore = lore.replaceAll("&7", ChatColor.GRAY + "");
-        lore = lore.replaceAll("&8", ChatColor.DARK_GRAY+ "");
-        lore = lore.replaceAll("&9", ChatColor.BLUE + "");
-        lore = lore.replaceAll("&a", ChatColor.GREEN + "");
-        lore = lore.replaceAll("&b", ChatColor.AQUA + "");
-        lore = lore.replaceAll("&c", ChatColor.RED + "");
-        lore = lore.replaceAll("&d", ChatColor.LIGHT_PURPLE + "");
-        lore = lore.replaceAll("&e", ChatColor.YELLOW + "");
-        lore = lore.replaceAll("&f", ChatColor.WHITE + "");
-        lore = lore.replaceAll("&g", ChatColor.MAGIC + "");
-        return lore;
+    public static String checkForChanges(String s) {
+        s = s.replaceAll("&0", ChatColor.BLACK + "");
+        s = s.replaceAll("&1", ChatColor.DARK_BLUE + "");
+        s = s.replaceAll("&2", ChatColor.DARK_GREEN + "");
+        s = s.replaceAll("&3", ChatColor.DARK_AQUA + "");
+        s = s.replaceAll("&4", ChatColor.DARK_RED + "");
+        s = s.replaceAll("&5", ChatColor.DARK_PURPLE + "");
+        s = s.replaceAll("&6", ChatColor.GOLD + "");
+        s = s.replaceAll("&7", ChatColor.GRAY + "");
+        s = s.replaceAll("&8", ChatColor.DARK_GRAY+ "");
+        s = s.replaceAll("&9", ChatColor.BLUE + "");
+        s = s.replaceAll("&a", ChatColor.GREEN + "");
+        s = s.replaceAll("&b", ChatColor.AQUA + "");
+        s = s.replaceAll("&c", ChatColor.RED + "");
+        s = s.replaceAll("&d", ChatColor.LIGHT_PURPLE + "");
+        s = s.replaceAll("&e", ChatColor.YELLOW + "");
+        s = s.replaceAll("&f", ChatColor.WHITE + "");
+        s = s.replaceAll("&g", ChatColor.MAGIC + "");
+        return s;
     }
 
 }

@@ -1,46 +1,41 @@
+---
 items:
-  sword:
-    material: 'DIAMOND_SWORD'
-    name: '&c&l❃ Epée Infinie ❃'
-    lore:
-    - '§7⦁ §eRareté : §c✯✯✯✯'
-    - '§7⦁ §eCette §6Epée §erevient dans'
-    - '§7⦁ §eton inventaire après ta mort !'
-    enchantments:
-    - 'DAMAGE_ALL'
-    - 'FIRE_ASPECT'
-    levels:
-    - '5'
-    - '2'
-    hide:
-    - 'false'
-
   bow:
-    material: 'BOW'
-    name: '&c&l❃ Arc Infinie ❃'
-    lore:
-    - '§7⦁ §eRareté : §c✯✯✯✯'
-    - '§7⦁ §eCet §6Arc §erevient dans'
-    - '§7⦁ §eton inventaire après ta mort !'
     enchantments:
-    - 'ARROW_INFINITE'
-    - 'ARROW_KNOCKBACK'
-    levels:
-    - '1'
-    - '2'
+      - ARROW_INFINITE
+      - ARROW_KNOCKBACK
     hide:
-    - 'false'
-
+      - "false"
+    levels:
+      - "1"
+      - "2"
+    lore:
+      - "§eARC"
+    material: BOW
+    name: "§cArc Infini"
   rod:
-    material: 'FISHING_ROD'
-    name: '&c&l❃ Rod Infinie ❃'
-    lore:
-    - '§7⦁ §eRareté : §c✯✯✯✯'
-    - '§7⦁ §eCette §6Rod §erevient dans'
-    - '§7⦁ §eton inventaire après ta mort !'
     enchantments:
-    - 'ARROW_DAMAGE'
-    levels:
-    - '5'
+      - ARROW_DAMAGE
     hide:
-    - 'true'
+      - "true"
+    levels:
+      - "5"
+    lore:
+      - "§eROD"
+    material: FISHING_ROD
+    name: "§cRod Infinie"
+  sword:
+    enchantments:
+      - DAMAGE_ALL
+      - FIRE_ASPECT
+    hide:
+      - "false"
+    levels:
+      - "5"
+      - "2"
+    lore:
+      - "§7⦁ §eRareté : §c✯✯✯✯"
+      - "§7⦁ §eCette §6Epée §erevient dans"
+      - "§7⦁ §el'inventaire après la mort !"
+    material: DIAMOND_SWORD
+    name: "§c❃ Epée Infinie ❃"
