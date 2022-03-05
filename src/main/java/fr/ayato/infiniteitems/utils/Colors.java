@@ -1,8 +1,8 @@
-package fr.ayato.infiniteitems.colors;
+package fr.ayato.infiniteitems.utils;
 
 import org.bukkit.ChatColor;
 
-public class ChangeColors {
+public class Colors {
 
     public static String checkForChanges(String lore) {
         lore = lore.replaceAll("&0", ChatColor.BLACK + "");

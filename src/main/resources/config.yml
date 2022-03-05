@@ -1,19 +1,46 @@
 items:
   sword:
-    material: "DIAMOND_SWORD"
-    name: "&cSword example"
-    lore: 'lore first &&& second &&& THIrd'
+    material: 'DIAMOND_SWORD'
+    name: '&c&l❃ Epée Infinie ❃'
+    lore:
+    - '§7⦁ §eRareté : §c✯✯✯✯'
+    - '§7⦁ §eCette §6Epée §erevient dans'
+    - '§7⦁ §eton inventaire après ta mort !'
+    enchantments:
+    - 'DAMAGE_ALL'
+    - 'FIRE_ASPECT'
+    levels:
+    - '5'
+    - '2'
+    hide:
+    - 'false'
 
   bow:
-    material: "BOW"
-    name: "&cBow example"
-    lore: 'lore first &&& &esecond &&& THIrd'
+    material: 'BOW'
+    name: '&c&l❃ Arc Infinie ❃'
+    lore:
+    - '§7⦁ §eRareté : §c✯✯✯✯'
+    - '§7⦁ §eCet §6Arc §erevient dans'
+    - '§7⦁ §eton inventaire après ta mort !'
+    enchantments:
+    - 'ARROW_INFINITE'
+    - 'ARROW_KNOCKBACK'
+    levels:
+    - '1'
+    - '2'
+    hide:
+    - 'false'
 
   rod:
-    material: "FISHING_ROD"
-    name: "&cRod example"
-    lore: 'lore first &&& second &&& THIrd'
-  test:
-    material: "APPLE"
-    name: "&agenius"
-    lore: '&ceat an apple &&& &leveryday it s &&& &bfcking good'
+    material: 'FISHING_ROD'
+    name: '&c&l❃ Rod Infinie ❃'
+    lore:
+    - '§7⦁ §eRareté : §c✯✯✯✯'
+    - '§7⦁ §eCette §6Rod §erevient dans'
+    - '§7⦁ §eton inventaire après ta mort !'
+    enchantments:
+    - 'ARROW_DAMAGE'
+    levels:
+    - '5'
+    hide:
+    - 'true'
