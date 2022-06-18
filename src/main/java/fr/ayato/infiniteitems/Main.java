@@ -4,6 +4,7 @@ import fr.ayato.infiniteitems.items.GiveItems;
 import fr.ayato.infiniteitems.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,6 @@ public class Main extends JavaPlugin {
                     configItemName.add(s);
                 }
             } catch (NullPointerException e) {
-                System.out.println(e);
             }
         }
     }
