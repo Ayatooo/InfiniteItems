@@ -19,6 +19,7 @@ public class CreateItem {
 
         // Text
         itemMeta.setDisplayName(displayName);
+
         itemMeta.setLore(loreFromConfig);
 
         // Add Enchantments on the item
