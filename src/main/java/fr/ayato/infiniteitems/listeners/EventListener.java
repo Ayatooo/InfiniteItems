@@ -36,25 +36,26 @@ public class EventListener implements Listener {
             // If the item is an infinite item, remove it from the inventory and add it to the playerList
             for (int i = 0; i < Main.configItemName.size(); i++) {
                 final String configItem = Main.configItemName.get(i);
-                final List<String> configItemLore = Config.getItemLore(configItem);
+                String confItem = configItem.replace("items.", "");
+                final List<String> configItemLore = Config.getItemLore(confItem);
                 final List<String> droppedItemLore = actualItemIterated.getItemMeta().getLore();
 
                 // Searching for infinite items
                 if (configItemLore.equals(droppedItemLore)) {
                     if (playerList.containsKey(playerUUID)) {
                         final HashMap<String, Integer> playerData = playerList.get(playerUUID);
-                        final Integer itemAmount = playerData.get(configItem);
+                        final Integer itemAmount = playerData.get(confItem);
                         if (itemAmount != null) {
                             final Integer newAmount = itemAmount + actualItemIterated.getAmount();
-                            playerData.put(configItem, newAmount);
+                            playerData.put(confItem, newAmount);
                             playerList.put(playerUUID, playerData);
                         } else {
-                            playerData.put(configItem, actualItemIterated.getAmount());
+                            playerData.put(confItem, actualItemIterated.getAmount());
                             playerList.put(playerUUID, playerData);
                         }
                     } else {
                         final HashMap<String, Integer> playerData = new HashMap<>();
-                        playerData.put(configItem, actualItemIterated.getAmount());
+                        playerData.put(confItem, actualItemIterated.getAmount());
                         playerList.put(playerUUID, playerData);
                     }
                     iterator.remove();
