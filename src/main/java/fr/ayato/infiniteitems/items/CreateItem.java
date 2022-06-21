@@ -1,7 +1,6 @@
 package fr.ayato.infiniteitems.items;
 
 import fr.ayato.infiniteitems.Main;
-import fr.ayato.infiniteitems.utils.Spliter;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -12,35 +11,23 @@ import java.util.List;
 
 public class CreateItem {
 
-    // Plugin
-    private static Main plugin;
-    public CreateItem(Main main) {
-        plugin = main;
-    }
-
     /* Initialize an item with data of the configuration file
        Executed by the command */
-    public static ItemStack itemToGive(Material material, String displayName, String loreFromConfig, String enchantments,  String levels, String hide) {
-        final ItemStack item = new ItemStack(material, 1);
+    public static ItemStack itemToGive(Material material, String displayName, List<String> loreFromConfig, List<String> enchantments,  List<Integer> levels, Boolean hide, Integer amount) {
+        final ItemStack item = new ItemStack(material, amount);
         final ItemMeta itemMeta = item.getItemMeta();
 
         // Text
         itemMeta.setDisplayName(displayName);
-        itemMeta.setLore(Spliter.strToList(Spliter.stringToSplit(loreFromConfig)));
-
-        // Enchantments
-        List<String> enchantList = Spliter.strToList(Spliter.stringToSplit(enchantments));
-
-        // Enchantments Levels
-        List<String> levelsList = Spliter.strToList(Spliter.stringToSplit(levels));
+        itemMeta.setLore(loreFromConfig);
 
         // Add Enchantments on the item
-        for (int i = 0; i < enchantList.size(); i++) {
-            itemMeta.addEnchant(Enchantment.getByName(enchantList.get(i)), Integer.parseInt(levelsList.get(i)), true);
+        for (int i = 0; i < enchantments.size(); i++) {
+            itemMeta.addEnchant(Enchantment.getByName(enchantments.get(i)), levels.get(i), hide);
         }
 
         // If the option is enable, enchantments will be hide
-        if (hide.contains("true")) {
+        if (hide) {
             itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
             itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }

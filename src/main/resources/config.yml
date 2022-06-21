@@ -1,41 +1,66 @@
----
 items:
   bow:
     enchantments:
-      - ARROW_INFINITE
-      - ARROW_KNOCKBACK
-    hide:
-      - "false"
+      - "ARROW_INFINITE"
+      - "ARROW_KNOCKBACK"
+    hide: false
     levels:
       - "1"
       - "2"
     lore:
-      - "§eARC"
+      - ""
+      - "§f➥ §eCet §bArc §eancien"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bRareté §f» §d✯✯✯✯"
     material: BOW
-    name: "§cArc Infini"
+    name: "§b❃ Arc Antique ❃"
   rod:
     enchantments:
-      - ARROW_DAMAGE
-    hide:
-      - "true"
+      - "ARROW_DAMAGE"
+    hide: true
     levels:
       - "5"
     lore:
-      - "§eROD"
+      - ""
+      - "§f➥ §eCette §bRod §eancienne"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bRareté §f» §d✯✯✯✯"
     material: FISHING_ROD
-    name: "§cRod Infinie"
+    name: "§b❃ Rod Antique ❃"
   sword:
     enchantments:
-      - DAMAGE_ALL
-      - FIRE_ASPECT
-    hide:
-      - "false"
+      - "DAMAGE_ALL"
+      - "FIRE_ASPECT"
+    hide: false
     levels:
       - "5"
       - "2"
     lore:
-      - "§7⦁ §eRareté : §c✯✯✯✯"
-      - "§7⦁ §eCette §6Epée §erevient dans"
-      - "§7⦁ §el'inventaire après la mort !"
+      - ""
+      - "§f➥ §eCette §bEpée §eancienne"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bRareté §f» §d✯✯✯✯"
+
     material: DIAMOND_SWORD
-    name: "§c❃ Epée Infinie ❃"
+    name: "§b❃ Epée Antique ❃"
+  apple:
+    enchantments:
+      - "DURABILITY"
+    hide: true
+    levels:
+      - "1"
+    lore:
+      - ""
+      - "§f➥ §eCes §bpommes §eanciennes"
+      - "§f➥ §ereviennent dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede leur guerrier !"
+      - ""
+      - "§f⦁ §bRareté §f» §d✯✯✯"
+    material: GOLDEN_APPLE
+    name: "§b❃ Pommes Antiques ❃"

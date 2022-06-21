@@ -5,21 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7be7ebe4-2b7e-48f9-ae13-6d5fcb7e7ce3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IF.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InfiniteItems.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/InfiniteItems-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfiniteItems-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/items/CreateItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/items/CreateItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/items/GiveItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/items/GiveItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/listeners/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/listeners/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/utils/Colors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ayato/infiniteitems/utils/Spliter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/InfiniteItems-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/items/CreateItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/items/CreateItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/items/GiveItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/items/GiveItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/listeners/EventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ayato/infiniteitems/listeners/EventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

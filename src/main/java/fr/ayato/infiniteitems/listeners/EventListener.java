@@ -2,8 +2,7 @@ package fr.ayato.infiniteitems.listeners;
 
 import fr.ayato.infiniteitems.Main;
 import fr.ayato.infiniteitems.items.CreateItem;
-import fr.ayato.infiniteitems.utils.Colors;
-import fr.ayato.infiniteitems.utils.Spliter;
+import fr.ayato.infiniteitems.utils.Config;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,35 +20,42 @@ public class EventListener implements Listener {
         this.plugin = main;
     }
 
-    private HashMap<UUID, List<String>> playersInfiniteItems = new HashMap<>();
+    public HashMap<String, Integer> itemData = new HashMap<>();
+    public HashMap<UUID, HashMap<String, Integer>> playerList = new HashMap<>();
 
     // When someone has been killed, checks if this player had an infinite item on him
     @EventHandler
     public void checkOnDeath(PlayerDeathEvent e) {
         final UUID playerUUID = e.getEntity().getPlayer().getUniqueId();
-
-        // Allow to loop over dropped items
         final Iterator<ItemStack> iterator = e.getDrops().iterator();
 
         // Iterate over all the player inventory to check if he has infinite item
         while(iterator.hasNext()){
             final ItemStack actualItemIterated = iterator.next();
 
+            // If the item is an infinite item, remove it from the inventory and add it to the playerList
             for (int i = 0; i < Main.configItemName.size(); i++) {
                 final String configItem = Main.configItemName.get(i);
-                final List<String> configItemLore = Spliter.strToList(Spliter.stringToSplit(plugin.getConfig().getString(configItem + ".lore")));
+                final List<String> configItemLore = Config.getItemLore(configItem);
                 final List<String> droppedItemLore = actualItemIterated.getItemMeta().getLore();
 
                 // Searching for infinite items
                 if (configItemLore.equals(droppedItemLore)) {
-                    if (playersInfiniteItems.containsKey(playerUUID)) {
-
-                        // Put the player in a Hashmap if he has one / multiple infinite items
-                        List<String> playerItemsList = new ArrayList<>(playersInfiniteItems.get(playerUUID));
-                        playerItemsList.add(configItem);
-                        playersInfiniteItems.put(playerUUID, playerItemsList);
+                    if (playerList.containsKey(playerUUID)) {
+                        final HashMap<String, Integer> playerData = playerList.get(playerUUID);
+                        final Integer itemAmount = playerData.get(configItem);
+                        if (itemAmount != null) {
+                            final Integer newAmount = itemAmount + actualItemIterated.getAmount();
+                            playerData.put(configItem, newAmount);
+                            playerList.put(playerUUID, playerData);
+                        } else {
+                            playerData.put(configItem, actualItemIterated.getAmount());
+                            playerList.put(playerUUID, playerData);
+                        }
                     } else {
-                        playersInfiniteItems.put(playerUUID, Collections.singletonList(configItem));
+                        final HashMap<String, Integer> playerData = new HashMap<>();
+                        playerData.put(configItem, actualItemIterated.getAmount());
+                        playerList.put(playerUUID, playerData);
                     }
                     iterator.remove();
                 }
@@ -64,23 +70,21 @@ public class EventListener implements Listener {
         final Player player = e.getPlayer();
         final UUID playerUUID = player.getUniqueId();
 
-        // Iterate over the list until it's empty
-        while (!playersInfiniteItems.isEmpty()) {
-            for (Map.Entry<UUID, List<String>> entry : playersInfiniteItems.entrySet()) {
-                for (String s : entry.getValue()) {
-                    // Item's Data
-                    final Material material = Material.valueOf(plugin.getConfig().getString(s + ".material"));
-                    final String lore = plugin.getConfig().getString(s + ".lore");
-                    final String itemDisplayName = plugin.getConfig().getString(s + ".name");
-                    final String enchantments = plugin.getConfig().getString(s + ".enchantments");
-                    final String enchantmentsLevels = plugin.getConfig().getString(s + ".levels");
-                    final String hide = plugin.getConfig().getString(s + ".hide");
-
-                    // Give the item to the player who lost it
-                    player.getInventory().addItem(CreateItem.itemToGive(material, Colors.checkForChanges(itemDisplayName), Colors.checkForChanges(lore), enchantments, enchantmentsLevels, hide));
-                    player.updateInventory();
-                }
-                playersInfiniteItems.remove(playerUUID);
+        // If the player is in the list, give him his infinite's items
+        if (playerList.containsKey(playerUUID)) {
+            for (Map.Entry<String, Integer> entry : playerList.get(playerUUID).entrySet()) {
+                final String itemName = entry.getKey().replace("items.", "");
+                final Integer amount = entry.getValue();
+                final Material material = Material.getMaterial(Config.getItemMaterial(itemName));
+                final String displayName = Config.getItemName(itemName);
+                final List<String> lore = Config.getItemLore(itemName);
+                final List<String> enchantments = Config.getItemEnchants(itemName);
+                final List<Integer> levels = Config.getItemEnchantsLevel(itemName);
+                final Boolean hide = Config.isEnchantsHidden(itemName);
+                final ItemStack item = CreateItem.itemToGive(material, displayName, lore, enchantments, levels, hide, amount);
+                player.getInventory().addItem(item);
+                itemData.remove(itemName);
+                playerList.remove(playerUUID);
             }
         }
     }
