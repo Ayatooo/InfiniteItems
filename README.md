@@ -1,14 +1,27 @@
-# Infinite Items
+# Infinites Items ♾️
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
+[![Java](https://img.shields.io/badge/Langage-Java-orange)](https://www.spigotmc.org/)
 
 Create an infinity of fully customizable minecraft items which can respawn after your death !
 
-## How to use it ?
 
-You only need to dowload the project in .zip mode.
-Then go to : ``InfiniteItems-master.zip\InfiniteItems-master\target`` and put the .jar on your server.
+## Screenshots 🔍
 
-## Author
+![Epée Antique](./src/main/resources/sword.png)
 
-* **Ayato__#0069**
+## Preview 🎥
+
+[![Watch the preview]()](https://youtu.be/YxzikJbgdWI)
+
+## How to use it ✨
+
+download the zip file, go into the Target directory and put the .jar into your plugins.
+
+Then in game, write /farm to open the ranking menu, or /farmpoint to see how to set / add points to a faction
+```bash
+  /infiniteitems
+```
+
+## Author 💻
+
+- Ayato__#0069
