@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "*---*_ " + ChatColor.AQUA + "InfiniteItems Enabled !" + ChatColor.LIGHT_PURPLE + " _*---*");
         saveDefaultConfig();
         getCommand("infiniteitems").setExecutor(new GiveItems(this));
-        getServer().getPluginManager().registerEvents(new EventListener(this), this);
+        getServer().getPluginManager().registerEvents(new EventListener(), this);
         configItemName = Config.getAllItems();
     }
 
