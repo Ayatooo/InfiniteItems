@@ -3,6 +3,7 @@ package fr.ayato.infiniteitems.items;
 import de.tr7zw.nbtapi.NBTItem;
 import fr.ayato.infiniteitems.Main;
 import fr.ayato.infiniteitems.utils.Config;
+import fr.ayato.infiniteitems.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -46,23 +47,18 @@ public class GiveItems implements CommandExecutor {
                     final List<String> enchantments = Config.getItemEnchants(configItemName);
                     final List<Integer> enchantmentsLevels = Config.getItemEnchantsLevel(configItemName);
                     final Boolean hide = Config.isEnchantsHidden(configItemName);
-
                     ItemStack itemStack = CreateItem.itemToGive(material, itemDisplayName, loreFromConfig, enchantments, enchantmentsLevels, hide, number);
-                    List<String> lore = new ArrayList<>();
-                    for (String s : loreFromConfig) {
-                        if (s.contains("%kills%")) {
-                            NBTItem nbtItem = new NBTItem(itemStack);
-                            nbtItem.getItem();
-                            nbtItem.setInteger("kills", 0);
-                            nbtItem.setBoolean("infinite", true);
-                            nbtItem.applyNBT(itemStack);
-                            s = s.replace("%kills%", "0");
-                        }
-                        lore.add(s);
-                    }
-
                     ItemMeta itemMeta = itemStack.getItemMeta();
+                    NBTItem nbtItem = new NBTItem(itemStack);
+                    nbtItem.getItem();
+                    List<String> lore = Utils.replaceLore(loreFromConfig, "%kills%", "0");
+                    lore = Utils.replaceLore(lore, "%date%", Utils.getDate());
                     itemMeta.setLore(lore);
+                    nbtItem.setInteger("kills", 0);
+                    nbtItem.applyNBT(itemStack);
+                    nbtItem.setString("date", Utils.getDate());
+                    nbtItem.applyNBT(itemStack);
+                    System.out.println("DATE 1 : " + nbtItem.getString("date"));
                     itemStack.setItemMeta(itemMeta);
 
                     // Give the item to the player

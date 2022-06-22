@@ -3,6 +3,7 @@ package fr.ayato.infiniteitems.listeners;
 import de.tr7zw.nbtapi.NBTItem;
 import fr.ayato.infiniteitems.Main;
 import fr.ayato.infiniteitems.utils.Config;
+import fr.ayato.infiniteitems.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,37 +27,19 @@ public class EventListener implements Listener {
         final Iterator<ItemStack> iterator = e.getDrops().iterator();
         final Player killer = e.getEntity().getKiller();
 
-        final List<String> coItLore = Config.getItemLore("sword");
+        final List<String> swordLore = Config.getItemLore("sword");
         //check if the player isnt dead alone
 
         if (killer != e.getEntity() && killer != null) {
-            System.out.println("KILLER != PLAYER");
             ItemStack itemStack = killer.getItemInHand();
             NBTItem nbtItem = new NBTItem(killer.getItemInHand());
             nbtItem.getItem();
-            System.out.println("kills : " + nbtItem.getInteger("kills"));
             Integer kills = nbtItem.getInteger("kills");
             kills++;
             nbtItem.setInteger("kills", kills);
             nbtItem.applyNBT(itemStack);
-            System.out.println("NewKills : " + kills);
-            System.out.println("NewKillsON SWORD : " + nbtItem.getInteger("kills"));
-            System.out.println("itemMeta : " + itemStack.getItemMeta());
-            ItemStack itemStack2 = new ItemStack(Material.DIAMOND_SWORD);
-            itemStack2.setItemMeta(itemStack.getItemMeta());
-            killer.getInventory().addItem(itemStack2);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            List<String> lore = new ArrayList<>();
-
-            for (String s : coItLore) {
-                if (s.contains("%kills%")) {
-
-                    s = s.replace("%kills%", kills.toString());
-                }
-                lore.add(s);
-            }
-
-            System.out.println("lore : " + lore);
+            List<String> lore = Utils.replaceLore(swordLore, "%kills%", String.valueOf(kills));
             itemMeta.setLore(lore);
             itemStack.setItemMeta(itemMeta);
             killer.updateInventory();
@@ -120,11 +103,8 @@ public class EventListener implements Listener {
                     final List<String> configItemLore = Config.getItemLore(confItem);
                     if (Objects.equals(lore, configItemLore.get(1))) {
                         Material material = Material.valueOf(Config.getItemMaterial(confItem));
-                        System.out.println("material : " + material);
-                        System.out.println("itemAmount : " + itemAmount);
                         ItemStack itemStack = new ItemStack(material, itemAmount);
                         itemStack.setItemMeta(itemMeta);
-                        System.out.println("itemStack : " + itemStack);
                         player.getInventory().addItem(itemStack);
                     }
                 }
