@@ -54,6 +54,7 @@ public class GiveItems implements CommandExecutor {
                             NBTItem nbtItem = new NBTItem(itemStack);
                             nbtItem.getItem();
                             nbtItem.setInteger("kills", 0);
+                            nbtItem.setBoolean("infinite", true);
                             nbtItem.applyNBT(itemStack);
                             s = s.replace("%kills%", "0");
                         }
