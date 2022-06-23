@@ -46,10 +46,6 @@ items:
       - "§f➥ §eaprès §bla mort §ede son guerrier !"
       - ""
       - "§f⦁ §bRareté §f» §d✯✯✯✯"
-      - "§f➥ Kills : §b%kills%"
-      - "§f➥ Last Lkill : §b%lastKill%"
-      - "§f➥ Propriétaire : §d%owner%"
-      - "§f➥ Date : §b%date%"
     material: DIAMOND_SWORD
     name: "§b❃ Epée Antique ❃"
   apple:

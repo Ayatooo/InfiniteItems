@@ -1,10 +1,10 @@
 package fr.ayato.infiniteitems.listeners;
 
-import de.tr7zw.nbtapi.NBTItem;
 import fr.ayato.infiniteitems.Main;
+import fr.ayato.infiniteitems.items.CreateItem;
 import fr.ayato.infiniteitems.utils.Config;
-import fr.ayato.infiniteitems.utils.Utils;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,25 +25,6 @@ public class EventListener implements Listener {
     public void checkOnDeath(PlayerDeathEvent e) {
         final UUID playerUUID = e.getEntity().getPlayer().getUniqueId();
         final Iterator<ItemStack> iterator = e.getDrops().iterator();
-        final Player killer = e.getEntity().getKiller();
-
-        final List<String> swordLore = Config.getItemLore("sword");
-        //check if the player isnt dead alone
-
-        if (killer != e.getEntity() && killer != null) {
-            ItemStack itemStack = killer.getItemInHand();
-            NBTItem nbtItem = new NBTItem(killer.getItemInHand());
-            nbtItem.getItem();
-            Integer kills = nbtItem.getInteger("kills");
-            kills++;
-            nbtItem.setInteger("kills", kills);
-            nbtItem.applyNBT(itemStack);
-            ItemMeta itemMeta = itemStack.getItemMeta();
-            List<String> lore = Utils.replaceLore(swordLore, "%kills%", String.valueOf(kills));
-            itemMeta.setLore(lore);
-            itemStack.setItemMeta(itemMeta);
-            killer.updateInventory();
-        }
 
         // Iterate over all the player inventory to check if he has infinite item
         while(iterator.hasNext()){
@@ -57,23 +38,21 @@ public class EventListener implements Listener {
                 final List<String> droppedItemLore = actualItemIterated.getItemMeta().getLore();
 
                 // Searching for infinite items
-                if (configItemLore.get(1).equals(droppedItemLore.get(1))) {
+                if (configItemLore.equals(droppedItemLore)) {
                     if (playerList.containsKey(playerUUID)) {
-                        ItemMeta itemMeta = actualItemIterated.getItemMeta();
                         final HashMap<ItemMeta, Integer> playerData = playerList.get(playerUUID);
-                        final Integer itemAmount = playerData.get(itemMeta);
+                        final Integer itemAmount = playerData.get(actualItemIterated.getItemMeta());
                         if (itemAmount != null) {
                             final Integer newAmount = itemAmount + actualItemIterated.getAmount();
-                            playerData.put(itemMeta, newAmount);
+                            playerData.put(actualItemIterated.getItemMeta(), newAmount);
                             playerList.put(playerUUID, playerData);
                         } else {
-                            playerData.put(itemMeta, actualItemIterated.getAmount());
+                            playerData.put(actualItemIterated.getItemMeta(), actualItemIterated.getAmount());
                             playerList.put(playerUUID, playerData);
                         }
                     } else {
-                        ItemMeta itemMeta = actualItemIterated.getItemMeta();
                         final HashMap<ItemMeta, Integer> playerData = new HashMap<>();
-                        playerData.put(itemMeta, actualItemIterated.getAmount());
+                        playerData.put(actualItemIterated.getItemMeta(), actualItemIterated.getAmount());
                         playerList.put(playerUUID, playerData);
                     }
                     iterator.remove();
